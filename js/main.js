@@ -73,3 +73,29 @@ typeit
   .delete(9, { delay: 300 })
   .type('<strong class="home__title-color">짐코딩</strong>입니다!')
   .go();
+
+// 이메일 클라이언트 열기
+
+const $contactForm = document.getElementById('contactForm');
+$contactForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  console.log(event);
+  console.dir(event);
+
+  //폼 정보
+  const name = $contactForm.name.value;
+  const subject = $contactForm.subject.value;
+  const message = $contactForm.message.value;
+  const to = 'quddnr1791@naver.com';
+
+  // 이메일 클라이언트 열기
+  location.href =
+    'mailto:' +
+    encodeURIComponent(to) +
+    '?subject=[' +
+    encodeURIComponent(name) +
+    '님의 문의]' +
+    encodeURIComponent(subject) +
+    '&body=' +
+    encodeURIComponent(message);
+});
